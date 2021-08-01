@@ -34,7 +34,7 @@ class Contact {
 
   factory Contact.fromMap(Map<dynamic, dynamic> map) => new Contact(
       fullName: map['fullName'],
-      phoneNumber:map['phoneNumber'];
+      phoneNumber:map['phoneNumber']);
 
   /// The full name of the contact, e.g. "Dr. Daniel Higgens Jr.".
   final String fullName;
