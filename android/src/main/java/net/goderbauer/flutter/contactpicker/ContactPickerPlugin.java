@@ -44,6 +44,7 @@ public class ContactPickerPlugin implements MethodCallHandler, PluginRegistry.Ac
       if (pendingResult != null) {
         pendingResult.error("multiple_requests", "Cancelled by a second request.", null);
         pendingResult = null;
+     
       }
       pendingResult = result;
 
@@ -62,11 +63,16 @@ public class ContactPickerPlugin implements MethodCallHandler, PluginRegistry.Ac
     if (resultCode != RESULT_OK) {
       pendingResult.success(null);
       pendingResult = null;
+       Toast.makeText(this, "failed", Toast.LENGTH_LONG)
+                    .show();
       return true;
     }
  
     String fullName = data.getStringExtra("name");
     String number = data.getStringExtra("number");
+    
+     Toast.makeText(this, fullName+number+"", Toast.LENGTH_LONG)
+                    .show();
 
    
 
