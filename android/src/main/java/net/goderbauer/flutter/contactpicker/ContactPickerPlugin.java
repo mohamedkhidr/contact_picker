@@ -9,7 +9,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
 import android.provider.ContactsContract;
-import android.widget.Toast;
+import android.util.Log;
 
 import java.util.HashMap;
 
@@ -58,25 +58,21 @@ public class ContactPickerPlugin implements MethodCallHandler, PluginRegistry.Ac
 
   @Override
   public boolean onActivityResult(int requestCode, int resultCode, Intent data) {
-    Toast.makeText(this, "activityresult", Toast.LENGTH_LONG)
-                    .show();
+   Log.e("taggggo",  "activityresult");
     if (requestCode != PICK_CONTACT) {
       return false;
     }
     if (resultCode != RESULT_OK) {
       pendingResult.success(null);
       pendingResult = null;
-       Toast.makeText(this, "failed", Toast.LENGTH_LONG)
-                    .show();
+     Log.e("taggggo",  "failed");
       return true;
     }
  
     String fullName = data.getStringExtra("name");
     String number = data.getStringExtra("number");
     
-     Toast.makeText(this, fullName+number+"", Toast.LENGTH_LONG)
-                    .show();
-
+    Log.e("taggggo",  fullName+number+"");
    
 
     HashMap<String, Object> contact = new HashMap<>();
