@@ -57,6 +57,8 @@ public class ContactPickerPlugin implements MethodCallHandler, PluginRegistry.Ac
 
   @Override
   public boolean onActivityResult(int requestCode, int resultCode, Intent data) {
+    Toast.makeText(this, "activityresult", Toast.LENGTH_LONG)
+                    .show();
     if (requestCode != PICK_CONTACT) {
       return false;
     }
