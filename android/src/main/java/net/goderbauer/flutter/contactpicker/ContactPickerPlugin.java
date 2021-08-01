@@ -64,23 +64,15 @@ public class ContactPickerPlugin implements MethodCallHandler, PluginRegistry.Ac
       pendingResult = null;
       return true;
     }
-    Uri contactUri = data.getData();
-    Cursor cursor = activity.getContentResolver().query(contactUri, null, null, null, null);
-    cursor.moveToFirst();
+ 
+    String fullName = data.getStringExtra("name");
+    String number = data.getStringExtra("number");
 
-    int phoneType = cursor.getInt(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.TYPE));
-    String customLabel = cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.LABEL));
-    String label = (String) ContactsContract.CommonDataKinds.Email.getTypeLabel(activity.getResources(), phoneType, customLabel);
-    String number = cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));
-    String fullName = cursor.getString(cursor.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME));
-
-    HashMap<String, Object> phoneNumber = new HashMap<>();
-    phoneNumber.put("number", number);
-    phoneNumber.put("label", label);
+   
 
     HashMap<String, Object> contact = new HashMap<>();
     contact.put("fullName", fullName);
-    contact.put("phoneNumber", phoneNumber);
+    contact.put("phoneNumber", number);
 
     pendingResult.success(contact);
     pendingResult = null;
