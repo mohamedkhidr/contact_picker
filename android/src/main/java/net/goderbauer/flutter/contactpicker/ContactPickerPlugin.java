@@ -66,6 +66,7 @@ public class ContactPickerPlugin implements MethodCallHandler, PluginRegistry.Ac
       pendingResult.success(null);
       pendingResult = null;
       Log.e("taggggo",  data.getComponent());
+      Log.e("taggggo",  requestCode+"====="+resultCode);
      Log.e("taggggo",  "failed");
       return true;
     }
