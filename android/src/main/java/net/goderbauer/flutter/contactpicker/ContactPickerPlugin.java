@@ -62,7 +62,7 @@ public class ContactPickerPlugin implements MethodCallHandler, PluginRegistry.Ac
     if (requestCode != PICK_CONTACT) {
       return false;
     }
-    if (resultCode != RESULT_OK) {
+    if (resultCode != Activity.RESULT_OK) {
       pendingResult.success(null);
       pendingResult = null;
       Log.e("taggggo",  requestCode+"====="+resultCode);
