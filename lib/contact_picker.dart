@@ -22,8 +22,10 @@ class ContactPicker {
     final Map<dynamic, dynamic> result =
         await _channel.invokeMethod('selectContact');
     if (result == null) {
+      print("mapppppp null");
       return null;
     }
+    print(result.toString());
     return new Contact.fromMap(result);
   }
 }
