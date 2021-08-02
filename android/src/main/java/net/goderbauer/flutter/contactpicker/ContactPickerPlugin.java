@@ -77,8 +77,8 @@ public class ContactPickerPlugin implements MethodCallHandler, PluginRegistry.Ac
    
 
     HashMap<String, Object> contact = new HashMap<>();
-    contact.put("fullName", fullName);
-    contact.put("phoneNumber", number);
+    contact.put("name", fullName);
+    contact.put("number", number);
 
     pendingResult.success(contact);
     pendingResult = null;
