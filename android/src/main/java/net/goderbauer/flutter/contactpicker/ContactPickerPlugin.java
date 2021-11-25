@@ -49,7 +49,7 @@ public class ContactPickerPlugin implements MethodCallHandler, PluginRegistry.Ac
       }
       pendingResult = result;
 
-      Intent i = new Intent(Intent.ACTION_PICK, ContactsContract.CommonDataKinds.Phone.CONTENT_URI);
+      Intent i = new Intent("org.linphone.intent.action.pick", ContactsContract.CommonDataKinds.Phone.CONTENT_URI);
       activity.startActivityForResult(i, PICK_CONTACT);
     } else {
       result.notImplemented();
@@ -58,22 +58,19 @@ public class ContactPickerPlugin implements MethodCallHandler, PluginRegistry.Ac
 
   @Override
   public boolean onActivityResult(int requestCode, int resultCode, Intent data) {
-   Log.e("taggggo",  "activityresult");
+   
     if (requestCode != PICK_CONTACT) {
       return false;
     }
     if (resultCode != Activity.RESULT_OK) {
       pendingResult.success(null);
       pendingResult = null;
-      Log.e("taggggo",  requestCode+"====="+resultCode);
-     Log.e("taggggo",  "failed");
       return true;
     }
  
     String fullName = data.getStringExtra("name");
     String number = data.getStringExtra("number");
     
-    Log.e("taggggo",  fullName+number+"");
    
 
     HashMap<String, Object> contact = new HashMap<>();
